@@ -6,7 +6,8 @@ public class AplMain {
 		// TODO Auto-generated method stub
 
 		Controller c = new Controller();
-		c.startupPrim();
+		//c.startupPrim();
+		c.startupKruskal();
 	}
 
 }
