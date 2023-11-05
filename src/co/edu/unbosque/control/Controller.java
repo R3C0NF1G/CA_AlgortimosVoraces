@@ -1,18 +1,24 @@
 package co.edu.unbosque.control;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Scanner;
+
+import javax.swing.JOptionPane;
 
 import co.edu.unbosque.model.Kruskal;
 import co.edu.unbosque.model.Prim;
 import co.edu.unbosque.view.MainView;
 
-public class Controller {
+public class Controller implements ActionListener{
 	
-	Prim p;
-	Kruskal graph;
+	private Prim p;
+	private Kruskal graph;
 	private MainView mainView;
+	private Scanner sc;
+	private int v,e;
 	
-	int graphArray[][] = new int [][]{{ 0, 4, 0, 0, 0, 0, 0, 8, 0 } ,
+	private int graphArray[][] = new int [][]{{ 0, 4, 0, 0, 0, 0, 0, 8, 0 } ,
 		{ 4, 0, 8, 0, 0, 0, 0 , 11, 0 } ,
 		{ 0, 8, 0, 7, 0, 4, 0, 0, 2 } ,
 		{ 0, 0, 7, 0, 9, 14, 0, 0, 0 } ,
@@ -22,16 +28,14 @@ public class Controller {
 		{ 8, 11, 0, 0, 0, 0, 1, 0, 7 } ,
 		{ 0, 0, 2, 0, 0, 0, 6, 7 , 0 }};
 		
-		int v,e;
-		Scanner sc;
 	
 	public Controller() {
 		
 		mainView = new MainView();
-		
+		setListeners();
 		p = new Prim();
 		sc = new Scanner(System.in);
-		
+		/*
 		System.out.println("Introduzca el número de vértices: ");
 		
 		v = sc.nextInt();
@@ -40,18 +44,14 @@ public class Controller {
 		
 		e = sc.nextInt();
 		
-		graph = new Kruskal(v, e);
+		graph = new Kruskal(v, e);*/
 	}
 
 	public void startupPrim() {
-		// TODO Auto-generated method stub
 		p.designMST(graphArray);
 	}
 
 	public void startupKruskal() {
-		// TODO Auto-generated method stub
-		
-		System.out.println("Prueba 1 2 3 sapo perro");
 		
 		for (int i = 0; i < e; i++) {
 			System.out.println("Introduzca el valor de origen para Edge(Borde/s)[" + i + "]");
@@ -65,5 +65,37 @@ public class Controller {
 		}
 		
 		graph.applyKruskal();
+	}
+	
+	public void setListeners() {
+		mainView.getPrim().addActionListener(this);
+		mainView.getKruskal().addActionListener(this);
+		mainView.getViajero().addActionListener(this);
+		mainView.getTarea().addActionListener(this);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		switch(e.getActionCommand()) {
+		
+		case"Prim":
+			System.out.println("Prim");
+			break;
+		case"Kruskal":
+			System.out.println("Kruskal");
+			break;
+		case"Viajero":
+			System.out.println("Viajero");
+			break;
+		case"Tarea":
+			System.out.println("Tarea");
+			break;
+		default:
+			JOptionPane.showMessageDialog(null, "Error");
+			break;
+		
+		}
+		
 	}
 }
