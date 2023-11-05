@@ -4,11 +4,13 @@ import java.util.Scanner;
 
 import co.edu.unbosque.model.Kruskal;
 import co.edu.unbosque.model.Prim;
+import co.edu.unbosque.view.MainView;
 
 public class Controller {
 	
 	Prim p;
 	Kruskal graph;
+	private MainView mainView;
 	
 	int graphArray[][] = new int [][]{{ 0, 4, 0, 0, 0, 0, 0, 8, 0 } ,
 		{ 4, 0, 8, 0, 0, 0, 0 , 11, 0 } ,
@@ -24,6 +26,8 @@ public class Controller {
 		Scanner sc;
 	
 	public Controller() {
+		
+		mainView = new MainView();
 		
 		p = new Prim();
 		sc = new Scanner(System.in);
