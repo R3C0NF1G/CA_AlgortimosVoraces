@@ -9,12 +9,14 @@ import javax.swing.JOptionPane;
 import co.edu.unbosque.model.Kruskal;
 import co.edu.unbosque.model.Prim;
 import co.edu.unbosque.view.MainView;
+import co.edu.unbosque.view.PrimView;
 
 public class Controller implements ActionListener{
 	
 	private Prim p;
 	private Kruskal graph;
 	private MainView mainView;
+	private PrimView primView;
 	private Scanner sc;
 	private int v,e;
 	
@@ -32,6 +34,7 @@ public class Controller implements ActionListener{
 	public Controller() {
 		
 		mainView = new MainView();
+		primView = new PrimView();
 		setListeners();
 		p = new Prim();
 		sc = new Scanner(System.in);
@@ -81,6 +84,8 @@ public class Controller implements ActionListener{
 		
 		case"Prim":
 			System.out.println("Prim");
+			mainView.setVisible(false);
+			primView.setVisible(true);
 			break;
 		case"Kruskal":
 			System.out.println("Kruskal");
