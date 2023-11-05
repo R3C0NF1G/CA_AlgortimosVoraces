@@ -85,11 +85,11 @@ public class Controller implements ActionListener{
 		case"Kruskal":
 			System.out.println("Kruskal");
 			break;
-		case"Viajero":
-			System.out.println("Viajero");
+		case"Viajante":
+			System.out.println("Viajante");
 			break;
-		case"Tarea":
-			System.out.println("Tarea");
+		case"Asignación":
+			System.out.println("Asignación");
 			break;
 		default:
 			JOptionPane.showMessageDialog(null, "Error");
