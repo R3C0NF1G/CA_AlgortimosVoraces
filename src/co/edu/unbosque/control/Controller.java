@@ -6,7 +6,7 @@ import co.edu.unbosque.model.Kruskal;
 import co.edu.unbosque.model.Prim;
 
 public class Controller {
-
+	
 	Prim p;
 	Kruskal graph;
 	
@@ -46,6 +46,8 @@ public class Controller {
 
 	public void startupKruskal() {
 		// TODO Auto-generated method stub
+		
+		System.out.println("Prueba 1 2 3 sapo perro");
 		
 		for (int i = 0; i < e; i++) {
 			System.out.println("Introduzca el valor de origen para Edge(Borde/s)[" + i + "]");
