@@ -33,7 +33,8 @@ public class MainView extends JFrame{
 		
 		title = new JLabel("Algoritmo voráces");
 		title.setFont(new Font("Cooper black", Font.BOLD, 20));
-		title.setBounds(180, 20, 220, 20);
+		title.setForeground(Color.BLACK);
+		title.setBounds(180, 20, 220, 30);
 		getContentPane().add(title);
 		
 		prim = new JButton("Prim");

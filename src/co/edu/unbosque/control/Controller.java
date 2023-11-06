@@ -2,6 +2,7 @@ package co.edu.unbosque.control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.JOptionPane;
@@ -10,8 +11,10 @@ import co.edu.unbosque.model.Kruskal;
 import co.edu.unbosque.model.Prim;
 import co.edu.unbosque.model.TaskProblem;
 import co.edu.unbosque.model.TaskProblem.Task;
+import co.edu.unbosque.model.TravellingSalesmanProblem;
 import co.edu.unbosque.view.MainView;
 import co.edu.unbosque.view.PrimView;
+import co.edu.unbosque.model.Graph;
 
 public class Controller implements ActionListener{
 	
@@ -95,7 +98,33 @@ public class Controller implements ActionListener{
 			System.out.println("Kruskal");
 			break;
 		case"Viajante":
-			System.out.println("Viajante");
+			int nCities;
+			try {
+				nCities = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de ciudades"));
+			}catch(NumberFormatException ee) {
+				JOptionPane.showMessageDialog(null, "Debe ingresar un número");
+				break;
+			}
+			
+			Graph graph = new Graph(nCities);
+			
+			for(int i = 0; i < nCities-1; i++) {
+				for(int j = i+1; j < nCities; j++) {
+					int distance;
+					try {
+						distance = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la distancia de la "
+								+ "ciudad "+i+" a la ciudad "+j));
+					}catch(NumberFormatException ee) {
+						JOptionPane.showMessageDialog(null, "Debe ingresar un número");
+						break;
+					}
+					graph.addDistance(i, j, distance);
+				}
+			}
+			
+	        ArrayList<Integer> route = TravellingSalesmanProblem.findRoute(graph);
+	        JOptionPane.showMessageDialog(null, "La ruta óptima encontrada es: "+ route);
+			
 			break;
 		case"Asignación":
 			System.out.println("Asignación");
