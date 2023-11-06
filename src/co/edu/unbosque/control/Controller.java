@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 
 import co.edu.unbosque.model.Kruskal;
 import co.edu.unbosque.model.Prim;
+import co.edu.unbosque.model.TaskProblem;
+import co.edu.unbosque.model.TaskProblem.Task;
 import co.edu.unbosque.view.MainView;
 import co.edu.unbosque.view.PrimView;
 
@@ -15,6 +17,7 @@ public class Controller implements ActionListener{
 	
 	private Prim p;
 	private Kruskal graph;
+	private TaskProblem taskProblem;
 	private MainView mainView;
 	private PrimView primView;
 	private Scanner sc;
@@ -37,6 +40,7 @@ public class Controller implements ActionListener{
 		primView = new PrimView();
 		setListeners();
 		p = new Prim();
+		taskProblem = new TaskProblem();
 		sc = new Scanner(System.in);
 		/*
 		System.out.println("Introduzca el número de vértices: ");
@@ -95,6 +99,19 @@ public class Controller implements ActionListener{
 			break;
 		case"Asignación":
 			System.out.println("Asignación");
+			taskProblem.addTask("a", 1, 4);
+			taskProblem.addTask("b", 0, 6);
+			taskProblem.addTask("c", 5, 7);
+			taskProblem.addTask("d", 3, 9);
+			taskProblem.addTask("e", 6, 10);
+			taskProblem.addTask("f", 8, 11);
+			taskProblem.addTask("g", 8, 12);
+			taskProblem.addTask("h", 12, 16);
+			
+			for(Task t : taskProblem.solve()) {
+				System.out.println(t.getName());
+			}
+			
 			break;
 		default:
 			JOptionPane.showMessageDialog(null, "Error");
