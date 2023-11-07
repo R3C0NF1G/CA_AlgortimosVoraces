@@ -14,6 +14,7 @@ import co.edu.unbosque.model.TaskProblem.Task;
 import co.edu.unbosque.model.TravellingSalesmanProblem;
 import co.edu.unbosque.view.MainView;
 import co.edu.unbosque.view.PrimView;
+import co.edu.unbosque.model.AssignProblem;
 import co.edu.unbosque.model.Graph;
 
 public class Controller implements ActionListener{
@@ -21,6 +22,7 @@ public class Controller implements ActionListener{
 	private Prim p;
 	private Kruskal graph;
 	private TaskProblem taskProblem;
+	private AssignProblem assignProb;
 	private MainView mainView;
 	private PrimView primView;
 	private Scanner sc;
@@ -44,6 +46,7 @@ public class Controller implements ActionListener{
 		setListeners();
 		p = new Prim();
 		taskProblem = new TaskProblem();
+		assignProb = new AssignProblem();
 		sc = new Scanner(System.in);
 		/*
 		System.out.println("Introduzca el número de vértices: ");
@@ -127,34 +130,34 @@ public class Controller implements ActionListener{
 			
 			break;
 		case "Asignación":
-			//System.out.println("Asignación");
-			taskProblem.setA(new ArrayList<Task>());
-			taskProblem.addTask("a", 1, 4);
-			taskProblem.addTask("b", 0, 6);
-			taskProblem.addTask("c", 5, 7);
-			taskProblem.addTask("d", 3, 9);
-			taskProblem.addTask("e", 6, 10);
-			taskProblem.addTask("f", 8, 11);
-			taskProblem.addTask("g", 8, 12);
-			taskProblem.addTask("h", 12, 16);
-			
-			String allTasksTit = "Estas son las tareas disponibles:\n";
-			String allTasks;
-			allTasks = new String("");
-			for(Task t : taskProblem.getA()) {
-				allTasks += t.getName() + " \nInicio: " + t.getS() + "\nFinal: " + t.getF() + "\n";
-			}
-			
-			//System.out.println("Tareas: " + allTasks);
-			mainView.showMessage(allTasksTit + allTasks);
-			
-			String response = "La mejor combinacion es:\n";
-			for(Task t : taskProblem.solve()) {
-				response += t.getName() + ", ";
-			}
-			
-			mainView.showMessage(response);
-			
+//			//System.out.println("Asignación");
+//			taskProblem.setA(new ArrayList<Task>());
+//			taskProblem.addTask("a", 1, 4);
+//			taskProblem.addTask("b", 0, 6);
+//			taskProblem.addTask("c", 5, 7);
+//			taskProblem.addTask("d", 3, 9);
+//			taskProblem.addTask("e", 6, 10);
+//			taskProblem.addTask("f", 8, 11);
+//			taskProblem.addTask("g", 8, 12);
+//			taskProblem.addTask("h", 12, 16);
+//			
+//			String allTasksTit = "Estas son las tareas disponibles:\n";
+//			String allTasks;
+//			allTasks = new String("");
+//			for(Task t : taskProblem.getA()) {
+//				allTasks += t.getName() + " \nInicio: " + t.getS() + "\nFinal: " + t.getF() + "\n";
+//			}
+//			
+//			//System.out.println("Tareas: " + allTasks);
+//			mainView.showMessage(allTasksTit + allTasks);
+//			
+//			String response = "La mejor combinacion es:\n";
+//			for(Task t : taskProblem.solve()) {
+//				response += t.getName() + ", ";
+//			}
+//			
+//			mainView.showMessage(response);
+			assignProb.solve();
 			break;
 		default:
 			JOptionPane.showMessageDialog(null, "Error");
