@@ -1,6 +1,7 @@
 package co.edu.unbosque.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class TaskProblem {
 	
@@ -59,10 +60,12 @@ public class TaskProblem {
 
 	public void addTask(String name, int s, int f) {
 		this.A.add(new Task(name, s, f));
-		System.out.println("Added task");
+		//System.out.println("Added task");
 	}
 	
 	public ArrayList<Task> solve() {
+		//Sorting the A array
+		A.sort((o1, o2) -> (o1.getF() + "").compareTo(o1.getF() + ""));
 		//Defining the solution array
 		ArrayList<Task> B = new ArrayList<Task>();
 		
@@ -71,7 +74,7 @@ public class TaskProblem {
 		int k = 0;
 		
 		//Lets start the greedy part
-		//We start in index 1 because index 0 was already taken
+		//We start at index 1 because index 0 was already taken
 		for(int i = 1; i < A.size(); i++) {
 			//Lets check if we have compatible tasks
 			if(A.get(i).getS() >= A.get(k).getF()) {
@@ -81,6 +84,14 @@ public class TaskProblem {
 			}
 		}
 		return B;
+	}
+
+	public ArrayList<Task> getA() {
+		return A;
+	}
+
+	public void setA(ArrayList<Task> a) {
+		A = a;
 	}
 	
 }

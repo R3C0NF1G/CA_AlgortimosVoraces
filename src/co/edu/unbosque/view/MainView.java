@@ -6,6 +6,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class MainView extends JFrame{
 	
@@ -61,6 +62,10 @@ public class MainView extends JFrame{
 		tarea.setBounds(414, 310, 100, 30);
 		getContentPane().add(tarea);
 		
+	}
+	
+	public void showMessage(String message) {
+		JOptionPane.showMessageDialog(null, message);
 	}
 
 	public JButton getPrim() {
