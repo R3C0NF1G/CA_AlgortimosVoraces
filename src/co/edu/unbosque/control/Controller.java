@@ -18,53 +18,28 @@ import co.edu.unbosque.model.AssignProblem;
 import co.edu.unbosque.model.Graph;
 
 public class Controller implements ActionListener{
-	
-	private Prim p;
+
 	private Kruskal graph;
 	private TaskProblem taskProblem;
 	private AssignProblem assignProb;
 	private MainView mainView;
 	private PrimView primView;
-	private Scanner sc;
-	private int v,e;
-	
-	private int graphArray[][] = new int [][]{{ 0, 4, 0, 0, 0, 0, 0, 8, 0 } ,
-		{ 4, 0, 8, 0, 0, 0, 0 , 11, 0 } ,
-		{ 0, 8, 0, 7, 0, 4, 0, 0, 2 } ,
-		{ 0, 0, 7, 0, 9, 14, 0, 0, 0 } ,
-		{ 0, 0, 0, 9, 0, 10, 0, 0, 0 } ,
-		{ 0, 0, 4, 14, 10, 0, 2, 0, 0 } ,
-		{ 0, 0, 0, 0, 0, 2, 0, 1, 6 } ,
-		{ 8, 11, 0, 0, 0, 0, 1, 0, 7 } ,
-		{ 0, 0, 2, 0, 0, 0, 6, 7 , 0 }};
+	private Prim p;
 		
 	
 	public Controller() {
 		
 		mainView = new MainView();
 		primView = new PrimView();
-		setListeners();
 		p = new Prim();
+		setListeners();
+		
 		taskProblem = new TaskProblem();
 		assignProb = new AssignProblem();
-		sc = new Scanner(System.in);
-		/*
-		System.out.println("Introduzca el número de vértices: ");
-		
-		v = sc.nextInt();
-		
-		System.out.println("Introduzca el número de bordes");
-		
-		e = sc.nextInt();
-		
-		graph = new Kruskal(v, e);*/
+	
 	}
 
-	public void startupPrim() {
-		p.designMST(graphArray);
-	}
-
-	public void startupKruskal() {
+	/*public void startupKruskal() {
 		
 		for (int i = 0; i < e; i++) {
 			System.out.println("Introduzca el valor de origen para Edge(Borde/s)[" + i + "]");
@@ -79,6 +54,7 @@ public class Controller implements ActionListener{
 		
 		graph.applyKruskal();
 	}
+	*/
 	
 	public void setListeners() {
 		mainView.getPrim().addActionListener(this);
@@ -93,9 +69,54 @@ public class Controller implements ActionListener{
 		switch(e.getActionCommand()) {
 		
 		case"Prim":
-			System.out.println("Prim");
 			mainView.setVisible(false);
 			primView.setVisible(true);
+			
+			
+			primView.getSaveArray().addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					try {
+						
+						int num_verts = Integer.parseInt(primView.getInpNumVerts().getText());
+						
+		                String graphArrayString = primView.getInpArray().getText();
+		                
+		                String[] rows = graphArrayString.split("\n");
+		                
+		                int graphArray[][] = new int[num_verts][num_verts];
+
+		                for (int i = 0; i < num_verts; i++) {
+		                    for (int j = 0; j < num_verts; j++) {
+		                    	
+		                        graphArray[i][j] = Integer.parseInt(rows[i].split(" ")[j]);
+		                        
+		                    }
+		                }
+
+		                p.createMinSpanningTree(graphArray);
+						
+					} catch (Exception e2) {
+						// TODO: handle exception
+						JOptionPane.showMessageDialog(null, "Debe llenar los campos con datos válidos.",
+							      "ERORR 404 NOT FOUND :(", JOptionPane.ERROR_MESSAGE);
+					}
+				}
+			});
+			
+			primView.getReturnB().addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					primView.setVisible(false);
+			        mainView.setVisible(true);
+				}
+			});
+			
+			
 			break;
 		case"Kruskal":
 			System.out.println("Kruskal");
