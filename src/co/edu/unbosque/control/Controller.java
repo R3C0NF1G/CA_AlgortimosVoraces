@@ -130,34 +130,15 @@ public class Controller implements ActionListener{
 			
 			break;
 		case "Asignación":
-//			//System.out.println("Asignación");
-//			taskProblem.setA(new ArrayList<Task>());
-//			taskProblem.addTask("a", 1, 4);
-//			taskProblem.addTask("b", 0, 6);
-//			taskProblem.addTask("c", 5, 7);
-//			taskProblem.addTask("d", 3, 9);
-//			taskProblem.addTask("e", 6, 10);
-//			taskProblem.addTask("f", 8, 11);
-//			taskProblem.addTask("g", 8, 12);
-//			taskProblem.addTask("h", 12, 16);
-//			
-//			String allTasksTit = "Estas son las tareas disponibles:\n";
-//			String allTasks;
-//			allTasks = new String("");
-//			for(Task t : taskProblem.getA()) {
-//				allTasks += t.getName() + " \nInicio: " + t.getS() + "\nFinal: " + t.getF() + "\n";
-//			}
-//			
-//			//System.out.println("Tareas: " + allTasks);
-//			mainView.showMessage(allTasksTit + allTasks);
-//			
-//			String response = "La mejor combinacion es:\n";
-//			for(Task t : taskProblem.solve()) {
-//				response += t.getName() + ", ";
-//			}
-//			
-//			mainView.showMessage(response);
-			assignProb.solve();
+			int res[] = assignProb.solve();
+			
+			//Mostrar el resultado
+			
+			String resBuild = "";
+			for(int i = 0; i < res.length; i++) {
+				resBuild += "Trabajador " + i + " -> " + res[i] + "\n"; 
+			}
+			mainView.showMessage(resBuild);
 			break;
 		default:
 			JOptionPane.showMessageDialog(null, "Error");

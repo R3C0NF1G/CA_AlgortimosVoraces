@@ -3,13 +3,7 @@ package co.edu.unbosque.model;
 import java.util.Arrays;
 
 /**
- * {2, 7, 3, 1}
- * {8, 1, 4, 6}
- * {9, 3, 7, 2}
- * {1, 6, 5, 8}
- * 
- * 1. La mejor tarea (columna) para cada trabajador (fila)
- * 		Hallar el menor número de cada fila y restarle ese al resto de valores de la fila
+ * Esta clase almacena toda la implementación del algoritmo para resolver el problema de asignación de tareas.
  * 
  * @author RootSoftworks
  *
@@ -22,7 +16,7 @@ public class AssignProblem {
 //								{3, 1, 7, 11}};
 	
 	private int[][] problem = { {2, 7, 3, 1},
-								{8, 1, 4, 6},
+								{8, 1, 4, 6}, //Esta matriz debe ser cuadrada
 								{9, 3, 7, 2},
 								{1, 6, 5, 8}};
 	
@@ -30,11 +24,24 @@ public class AssignProblem {
 		
 	}
 	
-	public void solve() {
+	/**
+	 * Esta es la implementación del método húngaro para resolver este problema.
+	 * La complejidad algorítmica es O(n^3) debido a que hay un máximo de 3 bucles anidados.
+	 * 
+	 * Primero, se ubica el menor número de una fila y luego se resta ese valor con cada uno de la misma fila.
+	 * Segundo, se comienzan a asignar las tareas, donde una tarea se asigna si en la intersección hay un cero.
+	 * Tercero, se verifica si ya fueron asignadas todas las tareas disponibles.
+	 * Si no se han terminado de asignar, se ubica la columna que falta, se ubica el mínimo y se resta con los demás valores de esa columna y se vuelven a asignar tareas.
+	 * Si ya todas las tareas fueron asignadas, termina el algoritmo.
+	 * @return
+	 */
+	
+	public int[] solve() {
 		
 		int min = 0;
 		
 		boolean isValid = false;
+		int asignaciones[];
 	
 		
 		for(int row = 0; row < problem.length; row++) {
@@ -59,7 +66,7 @@ public class AssignProblem {
 		
 		do {
 			int zeroAmount = 0;
-			int asignaciones[] = new int[problem.length]; //Array con las primeras asignaciones
+			asignaciones = new int[problem.length]; //Array con las primeras asignaciones
 			int listas[] =  new int[problem.length]; //Array con las filas que queden sin asignar
 			
 			for(int row = 0; row < problem.length; row++) {
@@ -115,7 +122,7 @@ public class AssignProblem {
 			}else {
 				ended = true;
 			}
-			
+			/* Debug
 			for(int x : asignaciones) {
 				System.out.print(x + ", ");
 			}
@@ -126,12 +133,14 @@ public class AssignProblem {
 				System.out.println();
 			}
 			System.out.println();
+			*/
 		}while(!ended);
 		
 		
 		//Falta: Agregar parte visual y el coste total de las actividades 
 		//(Sumar los valores correspondientes de cada actividad que hará el recurso)
 		
+		return asignaciones;
 		
 	}
 }
