@@ -12,6 +12,8 @@ public class MainView extends JFrame{
 	
 	private JLabel title;
 	
+	private JLabel subTitle;
+	
 	private JButton prim;
 	private JButton kruskal;
 	private JButton viajero;
@@ -37,6 +39,12 @@ public class MainView extends JFrame{
 		title.setForeground(Color.BLACK);
 		title.setBounds(180, 20, 220, 30);
 		getContentPane().add(title);
+		
+		subTitle = new JLabel("By: R00TS0FTW0RKS .::. :$");
+		subTitle.setFont(new Font("Arial", Font.ITALIC, 15));
+		subTitle.setForeground(Color.BLACK);
+		subTitle.setBounds(180, 100, 220, 30);
+		getContentPane().add(subTitle);
 		
 		prim = new JButton("Prim");
 		prim.setBackground(Color.BLACK);

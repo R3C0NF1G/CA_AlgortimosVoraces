@@ -2,6 +2,8 @@ package co.edu.unbosque.model;
 
 import java.util.Arrays;
 
+import javax.swing.JOptionPane;
+
 public class Kruskal {
 	
 	// Inicializar vértices, aristas y edgeArray  
@@ -88,8 +90,13 @@ public class Kruskal {
 		}
 	}
 		
-		for(index = 0; index < newEdge; ++index)
-			System.out.println(finalResult[index].source + " - " + finalResult[index].destination + ": " + finalResult[index].weight);
+		for(index = 0; index < newEdge; ++index) {
+			String result = " Origen - Destino : Peso\n " + finalResult[index].source + " \t " + " - " + " \t " + finalResult[index].destination + " \t " +" : " + " \t " + finalResult[index].weight;
+		    JOptionPane.showMessageDialog(null, result);
+		    
+		    
+		}
+			//System.out.println(finalResult[index].source + " - " + finalResult[index].destination + ": " + finalResult[index].weight);
 }
 	
 	// Crear findSetOfElement() para obtener el conjunto de un elemento 

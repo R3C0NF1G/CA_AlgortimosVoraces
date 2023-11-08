@@ -67,13 +67,13 @@ public class PrimView extends JFrame{
 		saveArray = new JButton("Guardar");
 		saveArray.setBackground(Color.BLACK);
 		saveArray.setForeground(Color.WHITE);
-		saveArray.setBounds(320, 280, 100, 30);
+		saveArray.setBounds(300, 280, 100, 30);
 		getContentPane().add(saveArray);
 		
 		returnB = new JButton(" <-- ");
 		returnB.setBackground(Color.BLACK);
 		returnB.setForeground(Color.WHITE);
-		returnB.setBounds(30, 280, 100, 30);
+		returnB.setBounds(420, 280, 60, 30);
 		getContentPane().add(returnB);
 		
 	}
