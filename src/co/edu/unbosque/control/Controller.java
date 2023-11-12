@@ -8,6 +8,8 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 import co.edu.unbosque.model.Kruskal;
+import co.edu.unbosque.model.MejorTarea;
+import co.edu.unbosque.model.MejorTrabajador;
 import co.edu.unbosque.model.Prim;
 import co.edu.unbosque.model.TaskProblem;
 import co.edu.unbosque.model.TaskProblem.Task;
@@ -21,13 +23,16 @@ import co.edu.unbosque.model.Graph;
 public class Controller implements ActionListener{
 
 
-	private TaskProblem taskProblem;
-	private AssignProblem assignProb;
+	//private TaskProblem taskProblem;
+	//private AssignProblem assignProb;
 	private MainView mainView;
 	private PrimView primView;
 	private KruskalView kruskalView;
 	private Prim p;
 	private Kruskal k;
+	
+	private MejorTarea MT;
+	private MejorTrabajador MTrab;
 		
 	
 	public Controller() {
@@ -38,8 +43,11 @@ public class Controller implements ActionListener{
 		p = new Prim();
 		setListeners();
 		
-		taskProblem = new TaskProblem();
-		assignProb = new AssignProblem();
+		//taskProblem = new TaskProblem();
+		//assignProb = new AssignProblem();
+		
+		MT = new MejorTarea();
+		MTrab = new MejorTrabajador();
 	
 	}
 	
@@ -48,6 +56,10 @@ public class Controller implements ActionListener{
 		mainView.getKruskal().addActionListener(this);
 		mainView.getViajero().addActionListener(this);
 		mainView.getTarea().addActionListener(this);
+		mainView.getTrabajador().addActionListener(this);
+		
+		mainView.getTarea().setActionCommand("AsignacionTarea");
+		mainView.getTrabajador().setActionCommand("AsignacionTrabajador");
 	}
 
 	@Override
@@ -192,16 +204,34 @@ public class Controller implements ActionListener{
 	        JOptionPane.showMessageDialog(null, "La ruta óptima encontrada es: "+ route);
 			
 			break;
-		case "Asignación":
-			int res[] = assignProb.solve();
-			
-			//Mostrar el resultado
-			
-			String resBuild = "";
+		case "AsignacionTarea":
+			boolean[][] res = MT.asignacionOptima();
+			String resStr = "";
 			for(int i = 0; i < res.length; i++) {
-				resBuild += "Trabajador " + i + " -> " + res[i] + "\n"; 
+				for(int j = 0; j < res[0].length; j++) {
+					
+					if(res[i][j] == true) {
+						resStr += "Tarea " + j + " asignada al trabajador " + i + "\n";
+					}	
+					
+				}
 			}
-			mainView.showMessage(resBuild);
+			mainView.showMessage(resStr);
+			break;
+		
+		case "AsignacionTrabajador":
+			boolean[][] resTrab = MTrab.asignacionOptima();
+			String resStrTrab = "";
+			for(int i = 0; i < resTrab.length; i++) {
+				for(int j = 0; j < resTrab[0].length; j++) {
+					
+					if(resTrab[i][j] == true) {
+						resStrTrab += "Trabajador " + i + " asignado a la tarea " + j + "\n";
+					}	
+					
+				}
+			}
+			mainView.showMessage(resStrTrab);
 			break;
 		default:
 			JOptionPane.showMessageDialog(null, "Error");

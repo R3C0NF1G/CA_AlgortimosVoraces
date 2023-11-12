@@ -18,6 +18,8 @@ public class MainView extends JFrame{
 	private JButton kruskal;
 	private JButton viajero;
 	private JButton tarea;
+	private JButton trabajador;
+	private JLabel asignacionesLabel;
 	
 	public MainView() {
 		execute();
@@ -64,11 +66,21 @@ public class MainView extends JFrame{
 		viajero.setBounds(284, 310, 100, 30);
 		getContentPane().add(viajero);
 		
-		tarea = new JButton("Asignación");
+		asignacionesLabel = new JLabel("Asignaciones:");
+		asignacionesLabel.setBounds(414, 250, 100, 30);
+		getContentPane().add(asignacionesLabel);
+		
+		tarea = new JButton("Tarea");
 		tarea.setBackground(Color.BLACK);
 		tarea.setForeground(Color.WHITE);
 		tarea.setBounds(414, 310, 100, 30);
 		getContentPane().add(tarea);
+		
+		trabajador = new JButton("Trabajador");
+		trabajador.setBackground(Color.BLACK);
+		trabajador.setForeground(Color.WHITE);
+		trabajador.setBounds(414, 280, 100, 30);
+		getContentPane().add(trabajador);
 		
 	}
 	
@@ -107,5 +119,14 @@ public class MainView extends JFrame{
 	public void setTarea(JButton tarea) {
 		this.tarea = tarea;
 	}
+
+	public JButton getTrabajador() {
+		return trabajador;
+	}
+
+	public void setTrabajador(JButton trabajador) {
+		this.trabajador = trabajador;
+	}
+	
 
 }
