@@ -2,18 +2,31 @@ package co.edu.unbosque.model;
 
 import java.util.Arrays;
 
+/**
+ * Esta clase esta desarrollada para implementar el algoritmo de Kruskal, encuentra el árbol de expansión mínimo
+ * de un grafo ponderado no dirigido. La clase proporciona métodos para aplicar el algoritmo y mostrar el resultado
+ * en una ventana emergente.
+ * 
+ * @author RootSoftworks
+ */
+
 import javax.swing.JOptionPane;
 
 public class Kruskal {
 	
 	// Inicializar vértices, aristas y edgeArray  
 
-	public Edge edgeArray[];
-	public Subset subset;
-	int v;
-	int edges;
+	public Edge edgeArray[]; //Arreglo de bordes que representan las aristas del grafo.
+	public Subset subset; //Objeto que representa un subconjunto de vértices.
+	int v; //Número de vértices en el grafo.
+	int edges; //Número de aristas en el grafo.
 	
-	// Uso del constructor para crear un árbol o gráfico
+	 /**
+     * Constructor de la clase Kruskal. Inicializa el número de vértices, el número de aristas y el arreglo de bordes.
+     *
+     * @param v     Número de vértices en el grafo.
+     * @param edges Número de aristas en el grafo.
+     */
 	
 	public Kruskal(int v, int edges) {
 		
@@ -26,7 +39,9 @@ public class Kruskal {
 		
 	}
 	
-	// Crear applyKruskal() para aplicar el algoritmo de Kruskal  
+	 /**
+     * Aplica el algoritmo de Kruskal para encontrar el árbol de expansión mínimo del grafo.
+     */
 	
 	public void applyKruskal() {
 		
@@ -99,7 +114,13 @@ public class Kruskal {
 			//System.out.println(finalResult[index].source + " - " + finalResult[index].destination + ": " + finalResult[index].weight);
 }
 	
-	// Crear findSetOfElement() para obtener el conjunto de un elemento 
+	/**
+     * Obtiene el conjunto al que pertenece un elemento dado en el arreglo de subconjuntos.
+     *
+     * @param subsetArray Arreglo de subconjuntos.
+     * @param i            Índice del elemento.
+     * @return Índice del conjunto al que pertenece el elemento.
+     */
 	
 	public int findSetOfElement(Subset subsetArray[], int i) {
 		
@@ -111,7 +132,13 @@ public class Kruskal {
 		
 	}
 	
-	// Crear performUnion() para realizar la unión de dos conjuntos  
+	 /**
+     * Realiza la unión de dos conjuntos en el arreglo de subconjuntos.
+     *
+     * @param subsetArray      Arreglo de subconjuntos.
+     * @param sourceRoot       Raíz del conjunto que contiene el primer elemento.
+     * @param destinationRoot  Raíz del conjunto que contiene el segundo elemento.
+     */  
 	
 	public void performUnion(Subset subsetArray[], int sourceRoot, int destinationRoot) {
 		
