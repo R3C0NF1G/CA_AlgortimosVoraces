@@ -28,6 +28,7 @@ public class MejorTrabajador {
 //		}
 		return asignacion;
 	}
+	
 	public int mejorTrabajador(int[][] costos, boolean[][] asignacion, int i) {
 		int trabajador, min, mejorTrabajador = 0;
 		
