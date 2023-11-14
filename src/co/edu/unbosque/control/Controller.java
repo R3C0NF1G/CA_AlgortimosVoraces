@@ -68,7 +68,7 @@ public class Controller implements ActionListener{
 	}
 
 	/**
-	 * Este metodo se sobre-escribe de la interfaz ActionListener. Nos permite asignar a cada boton su correspondiente accion gracias a su ActionCommand
+	 * Este metodo se sobre-escribe de la interfaz ActionListener. Nos permite asignar a cada boton su correspondiente accion gracias a su ActionCommand 
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
