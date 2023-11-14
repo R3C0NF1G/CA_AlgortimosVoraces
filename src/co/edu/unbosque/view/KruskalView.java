@@ -8,6 +8,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+/**
+ * Esta clase es una vista auxiliar para la implementacion del algoritmo de Kruskal.
+ * Se utiliza para solicitar el ingreso de los datos necesarios para realizar el algoritmo.
+ * @author RootSoftworks
+ *
+ */
 public class KruskalView extends JFrame{
 	
 	private JLabel title;
@@ -18,6 +24,9 @@ public class KruskalView extends JFrame{
 	private JButton save;
 	private JButton returnB;
 	
+	/**
+	 * Este constructor es usado para configurar la ventana auxiliar.
+	 */
 	public KruskalView () {
 		
 		execute();
@@ -32,6 +41,9 @@ public class KruskalView extends JFrame{
 		setVisible(false);
 	}
 
+	/**
+	 * Este metodo inicializa todos los componentes Swing que componen la vista, como titulos y botones.
+	 */
 	private void execute() {
 		// TODO Auto-generated method stub
 		title = new JLabel("Algoritmo de Kruskal");

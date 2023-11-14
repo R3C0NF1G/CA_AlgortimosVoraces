@@ -14,6 +14,12 @@ import javax.swing.JTextField;
 
 import co.edu.unbosque.model.Prim;
 
+/**
+ * Esta clase es una ventana auxiliar para la implementacion del algoritmo de Prim.
+ * Se utiliza para ingresar los datos requeridos para el funcionamiento del algoritmo de Prim.
+ * @author RootSoftworks
+ *
+ */
 public class PrimView extends JFrame{
 
 	private JLabel title;
@@ -25,6 +31,9 @@ public class PrimView extends JFrame{
 	private JButton returnB;
 	Prim p;
 	
+	/**
+	 * Este constructor se utiliza para configurar la ventana auxiliar.
+	 */
 	public PrimView() {
 		
 		execute();
@@ -40,6 +49,9 @@ public class PrimView extends JFrame{
 		
 	}
 
+	/**
+	 * Este metodo inicializa todos los componentes swing que componen la ventana.
+	 */
 	private void execute() {
 		// TODO Auto-generated method stub
 		

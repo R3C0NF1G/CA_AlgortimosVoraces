@@ -11,20 +11,20 @@ import co.edu.unbosque.model.Kruskal;
 import co.edu.unbosque.model.MejorTarea;
 import co.edu.unbosque.model.MejorTrabajador;
 import co.edu.unbosque.model.Prim;
-import co.edu.unbosque.model.TaskProblem;
-import co.edu.unbosque.model.TaskProblem.Task;
 import co.edu.unbosque.model.TravellingSalesmanProblem;
 import co.edu.unbosque.view.KruskalView;
 import co.edu.unbosque.view.MainView;
 import co.edu.unbosque.view.PrimView;
-import co.edu.unbosque.model.AssignProblem;
 import co.edu.unbosque.model.Graph;
 
+/**
+ * Esta clase es el controlador principal de la aplicacion, mueve datos del modelo a la vista y de la vista al modelo gracias a la interfaz ActionListener
+ * @author RootSoftworks
+ *
+ */
 public class Controller implements ActionListener{
 
 
-	//private TaskProblem taskProblem;
-	//private AssignProblem assignProb;
 	private MainView mainView;
 	private PrimView primView;
 	private KruskalView kruskalView;
@@ -34,7 +34,9 @@ public class Controller implements ActionListener{
 	private MejorTarea MT;
 	private MejorTrabajador MTrab;
 		
-	
+	/**
+	 * Dentro del constructor se instancian todos los objetos que se van a utilizar.
+	 */
 	public Controller() {
 		
 		mainView = new MainView();
@@ -51,6 +53,9 @@ public class Controller implements ActionListener{
 	
 	}
 	
+	/**
+	 * Este metodo configura los ActionListeners de cada boton de la vista, para poder diferenciar uno del otro y asignarles sus correspondientes acciones.
+	 */
 	public void setListeners() {
 		mainView.getPrim().addActionListener(this);
 		mainView.getKruskal().addActionListener(this);
@@ -62,6 +67,9 @@ public class Controller implements ActionListener{
 		mainView.getTrabajador().setActionCommand("AsignacionTrabajador");
 	}
 
+	/**
+	 * Este metodo se sobre-escribe de la interfaz ActionListener. Nos permite asignar a cada boton su correspondiente accion gracias a su ActionCommand
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		

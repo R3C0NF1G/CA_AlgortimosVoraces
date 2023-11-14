@@ -2,8 +2,21 @@ package co.edu.unbosque.model;
 
 import java.util.Arrays;
 
+/**
+ * Esta clase contiene la implementacion de la solucion para el problema de asignacion de tareas, realizada con un enfoque voraz
+ * El problema trata de que dada una matriz de costos, se debe asignar la mejor tarea a cada trabajador, donde las tareas son las columnas y los trabajadores las filas
+ * @author RootSoftworks
+ *
+ */
 public class MejorTarea {
 
+	/**
+	 * Este método contiene la solucion del problema. 
+	 * Primero, define la matriz de costos que se quiere resolver.
+	 * Se utiliza una matriz de valores booleanos que sera del mismo tamaño que la de costos.
+	 * Esta matriz representa las posiciones de la matriz de costo que no han sido asignadas aún.
+	 * @return Matriz booleana
+	 */
 	public boolean[][] asignacionOptima() {
 		int trabajador, tarea;
 		
@@ -28,6 +41,16 @@ public class MejorTarea {
 //		}
 		return asignacion;
 	}
+	
+	/**
+	 * Este método revisa cuál es la mejor tarea que se le puede asignar a un trabajador.
+	 * Para ello, revisa fila por fila cuál es el menor valor de costo, y se lo asigna a ese trabajador.
+	 * Pero antes, se asegura de que esa tarea no esté asignada aún a ningún otro trabajador, si está asignada, entonces le asignará la segunda mejor tarea que puede hacer.
+	 * @param trabajador
+	 * @param costos
+	 * @param asignacion
+	 * @return
+	 */
 	public int mejorTarea(int trabajador, int[][] costos, boolean[][] asignacion) {
 		int tarea, min, mejorTarea = 0;
 		
@@ -43,6 +66,15 @@ public class MejorTarea {
 		return mejorTarea;
 	}
 	
+	/**
+	 * Este método revisa que la tarea que se quiere asignar a un trabajador no haya sido asignada a ningún otro trabajador.
+	 * Devuelve true si la tarea ya fue asignada.
+	 * Devuelve false si la tarea aún no ha sido asignada.
+	 * @param asignacion
+	 * @param tarea
+	 * @param trabajador
+	 * @return
+	 */
 	public boolean yaEscogida(boolean[][] asignacion, int tarea, int trabajador) {
 	
 		for(int i = 0; i < trabajador; i++) {

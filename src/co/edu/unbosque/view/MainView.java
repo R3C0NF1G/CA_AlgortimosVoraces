@@ -8,6 +8,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+/**
+ * Esta es la clase principal de la vista, contiene todos los elementos visuales y hereda de la clase JFrame.
+ * @author RootSoftworks
+ *
+ */
 public class MainView extends JFrame{
 	
 	private JLabel title;
@@ -21,6 +26,9 @@ public class MainView extends JFrame{
 	private JButton trabajador;
 	private JLabel asignacionesLabel;
 	
+	/**
+	 * Dentro del constructor se realiza toda la configuracion del JFrame, que es esta clase. Se le pone tamaño, layout y titulo. 
+	 */
 	public MainView() {
 		execute();
 		
@@ -34,6 +42,9 @@ public class MainView extends JFrame{
 		setVisible(true);
 	}
 	
+	/**
+	 * Este metodo inicializa y configura cada elemento visual, como botones y titulos.
+	 */
 	public void execute() {
 		
 		title = new JLabel("Algoritmo voráces");
